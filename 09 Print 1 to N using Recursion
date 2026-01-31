@@ -1,0 +1,11 @@
+class Solution:
+    def printNumbers(self, n):
+        # Your code goes here
+        def fun(i,n):
+          if i>n:
+            return
+          else:
+            print(i)
+            fun(i+1,n)
+        fun(1,n)
+    
