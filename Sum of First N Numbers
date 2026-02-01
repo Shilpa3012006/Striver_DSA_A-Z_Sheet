@@ -1,0 +1,24 @@
+class Solution:
+    def NnumbersSum(self, N):
+        #your code goes here
+        #your code goes here
+        if N==0:
+            return 0
+        else:
+            return N+self.NnumbersSum(N-1)
+        """
+        # 1st method - parameterised method
+        total_sum=0
+        
+        def add(i,N):
+            nonlocal total_sum
+            if i>N:
+                return
+            else:
+                total_sum=total_sum+i
+                add(i+1,N)
+        
+        add(1,N) 
+        return total_sum
+        """
+
