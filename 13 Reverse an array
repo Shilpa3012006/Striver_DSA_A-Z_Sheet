@@ -1,0 +1,9 @@
+class Solution:
+    def reverse(self, arr: list, n: int) -> None:
+        def rever(arr,i,n):
+            if i>=(n-i-1):
+                return
+            else:
+                arr[i],arr[(n-i-1)]=arr[(n-i-1)],arr[i]
+                rever(arr,i+1,n)
+        rever(arr,0,n)
