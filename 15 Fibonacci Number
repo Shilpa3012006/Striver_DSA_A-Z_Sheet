@@ -1,0 +1,10 @@
+class Solution:
+    def fib(self, n):
+        #your code goes here
+        def f(n):
+            if n<=1:
+                return n
+            last=f(n-1)
+            slast=f(n-2)
+            return last+slast
+        return f(n)
