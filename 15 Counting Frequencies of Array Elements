@@ -1,0 +1,11 @@
+class Solution:
+    def countFrequencies(self, nums):
+        # Your code goes here
+        freq={}
+        for i in range(len(nums)):
+            if nums[i] in freq:
+                freq[nums[i]]+=1
+            else:
+                freq[nums[i]]=1
+        return [[k,v] for k,v in freq.items()]
+        
