@@ -1,0 +1,44 @@
+# brute force method
+"""
+nums=list(map(int,input().split()))
+n=len(nums)
+sort=sorted(nums)
+lar=sort[-1]
+sec_lar=0
+print(sort)
+for i in range(n-2,-1,-1):
+    if sort[i]!=lar:
+        sec_lar=sort[i]
+        break
+print(sec_lar)
+"""
+
+# better method
+""""
+nums=list(map(int,input().split()))
+n=len(nums)
+lar=nums[0]
+for i in range(1,n):
+    if nums[i]>lar:
+        lar=nums[i]
+print(lar)
+s_lar=float('-inf')
+for i in range(n):
+    if nums[i]>s_lar and nums[i]!=lar:
+        s_lar=nums[i]
+print(s_lar)
+"""
+
+#obtimal method
+nums=list(map(int,input().split()))
+n=len(nums)
+lar=nums[0]
+s_lar=float('-inf')
+for i in range(1,n):
+    if nums[i]>lar:
+        s_lar=lar
+        lar=nums[i]
+    else:
+        if nums[i]<lar and nums[i]>s_lar:
+            s_lar=nums[i]
+print(s_lar)
