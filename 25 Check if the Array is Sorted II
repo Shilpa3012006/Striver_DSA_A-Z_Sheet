@@ -1,0 +1,11 @@
+nums=list(map(int,input().split()))
+n=len(nums)
+for i in range(n-1):
+    if nums[i]>nums[i+1]:
+        print("not sorted")
+print("sorted")
+        
+
+            
+    
+    
