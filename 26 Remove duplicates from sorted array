@@ -1,0 +1,26 @@
+#optimal approch
+nums=list(map(int,input().split()))
+n=len(nums)
+i=0
+for j in range (1,n):
+    if nums[j]==nums[i]:
+        continue
+    else:
+        i+=1
+        nums[i],nums[j]=nums[j],nums[i]
+print(i+1)
+print(nums)
+    
+ 
+#brute force approach T.C:O(n^2) S.C:O(n)
+freq={}
+n1=[]
+n2=[]
+for num in nums:
+    if num in freq:
+        n2.append(num)
+    else:
+        freq[num]=1
+        n1.append(num)
+print(len(n1))
+print(n1+n2)
