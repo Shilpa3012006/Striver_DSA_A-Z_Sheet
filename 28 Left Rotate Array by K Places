@@ -1,0 +1,62 @@
+#rotated by k.(optimal) T.C O(n) and S.C O(1)
+def reverse(arr,start,end):
+    while start < end:
+        arr[start],arr[end] = arr[end],arr[start]
+        start += 1
+        end -= 1
+
+
+nums = list(map(int,input().split()))
+K = int(input())
+
+n = len(nums)
+k = K % n
+
+reverse(nums,0,k-1)
+reverse(nums,k,n-1)
+reverse(nums,0,n-1)
+
+print(nums)
+
+
+#rorate by one.  T.C O(n) and S.C O(1)
+"""
+nums=list(map(int,input().split()))
+n=len(nums)
+# first_ele=nums[0]
+# for i in range(n-1):
+#     nums[i]=nums[i+1]
+# nums[n-1]=first_ele
+# print(nums)
+"""
+
+
+#rotated by K.(brute force)  T.C O(2n) and S.C O(k)
+"""
+K=int(input())
+k=K%n
+temp=nums[:k]
+for i in range(n-k):
+    nums[i]=nums[i+k]
+j=0
+for i in range((n-k),n):
+    nums[i]=temp[j]
+    j+=1
+print(nums)
+"""
+
+#another method.
+nums=list(map(int,input().split()))
+n=len(nums)
+K=int(input())
+k=K%n
+
+nums=nums[k:]+nums[:k]
+print(nums)
+
+
+
+
+
+
+
