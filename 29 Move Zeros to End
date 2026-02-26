@@ -1,0 +1,30 @@
+#optimal approch T.C O(n) and S.C O(1)
+nums=list(map(int,input().split()))
+n=len(nums)
+j=-1
+for i in range(n):
+    if nums[i]==0:
+        j=i
+        break
+for i in range(j,n):
+    if nums[i]!=0:
+        nums[j],nums[i]=nums[i],nums[j]
+        j+=1
+print(nums)
+
+
+
+#brute force approch T.C O(2n) and S.C O(n)
+"""
+n=len(nums)
+temp=[]
+for i in range(n):
+    if nums[i]!=0:
+        temp.append(nums[i])
+size_num=len(temp)
+for i in range(size_num):
+    nums[i]=temp[i]
+for i in range(size_num,n):
+    nums[i]=0  
+print(nums)
+"""
