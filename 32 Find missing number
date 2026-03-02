@@ -1,0 +1,19 @@
+#optimal approch T.C O(n) S.C O(1)
+nums=list(map(int,input().split()))
+n=len(nums)
+total=n*(n+1)//2
+sum_of_nums=sum(nums)
+missing_number=total-sum_of_nums
+print(missing_number)
+
+
+
+#brute force approch T.C O(n^2) S.C O(1)
+"""
+def findMissing(nums):
+    for i in range(0,len(nums)+1):
+        if i not in nums:
+            return i
+print(findMissing(nums))
+
+"""
