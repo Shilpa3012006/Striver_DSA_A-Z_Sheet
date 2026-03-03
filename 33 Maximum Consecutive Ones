@@ -1,0 +1,32 @@
+#optimal T.C O(n) S.C O(1)
+nums=list(map(int,input().split()))
+max_num=0
+count=0
+for i in nums:
+    if i==1:
+        count+=1
+    elif count>max_num:
+        max_num=count
+        count=0
+if count>max_num:
+    max_num=count
+print(max_num)
+    
+#brute force T.C O(2n) S.C O(n)
+"""
+temp=[]
+count=0
+for i in range(len(nums)):
+    if nums[i]==1:
+        count+=1
+    else:
+        temp.append(count)
+        count=0
+temp.append(count)
+
+max_num=0
+for num in temp:
+    if num > max_num:
+        max_num=num
+print(max_num)
+"""
