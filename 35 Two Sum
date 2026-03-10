@@ -1,0 +1,23 @@
+#optimal approch T.C O(n) S.C O(1)
+nums=list(map(int,input().split()))
+n=len(nums)
+target=int(input())
+hash_map={}
+for i in range(n):
+    complement=target-nums[i]
+    if complement in hash_map:
+        print(hash_map[complement],i)
+        break
+    hash_map[nums[i]]=i
+
+#brute force approch T.C O(n^2) S.C O(1)
+nums = list(map(int, input().split()))
+target = int(input())
+
+n = len(nums)
+
+for i in range(n):
+    for j in range(i + 1, n):
+        if nums[i] + nums[j] == target:
+            print(i, j)
+            break
