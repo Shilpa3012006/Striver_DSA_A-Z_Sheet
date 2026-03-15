@@ -1,0 +1,71 @@
+nums = list(map(int, input().split()))
+k = int(input())
+left=0
+right=0
+summation=nums[0]
+max_len=0
+n=len(nums)
+while right<n:
+    while left<=right and summation>k:
+        summation-=nums[left]
+        left+=1
+    if summation==k:
+        max_len=max(max_len,right-left+1)
+    right+=1
+    if right<n:
+        summation+=nums[right]
+print(max_len)
+    
+
+
+    
+
+
+
+# #better solution using prefix_sum and hashing T.C O(n) or O(n^2) S.C O(n)
+# """
+# prefix_sum = 0
+# max_len = 0
+
+# prefix_map = {0: -1}
+
+# for i in range(len(nums)):
+#     prefix_sum += nums[i]
+
+#     if (prefix_sum - k) in prefix_map:
+#         length = i - prefix_map[prefix_sum - k]
+#         max_len = max(max_len, length)
+
+#     if prefix_sum not in prefix_map:
+#         prefix_map[prefix_sum] = i
+
+# print(max_len)
+
+
+
+
+
+
+
+# # brute force approch T.C: O(n^2) S.C: O(1)
+
+
+# nums = list(map(int, input().split()))
+# k = int(input())
+
+# n = len(nums)
+# max_len = 0
+
+# for i in range(n):
+#     current_sum = 0
+#     for j in range(i, n):
+#         current_sum += nums[j]
+
+#         if current_sum == k:
+#             max_len = max(max_len, j - i + 1)
+
+#         elif current_sum > k:
+#             break   # important optimization since numbers are positive
+
+# print(max_len)
+# """
