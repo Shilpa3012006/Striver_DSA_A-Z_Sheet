@@ -1,0 +1,36 @@
+nums=list(map(int,input().split()))
+n=len(nums)
+
+#optimal approch (Boyer-Moore Voting Algorithm) T.C O(n) S.C O(1)
+element=None
+count=0
+
+for num in nums:
+    if count==0:
+        element=num
+    if num==element:
+        count+=1
+    else:
+        count-=1
+
+print(element)
+
+
+#better approch T.C O(n+n/2) S.C O(n)
+hash={}
+for i in range(n):
+    hash[nums[i]]=hash.get(nums[i],0)+1
+for k,v in hash.items():
+    if v>(n//2):
+        print(k)
+#brute force approch T.C O(n^2) S.C O(1)
+for i in range(n):
+    count = 0
+
+    for j in range(n):
+        if nums[j] == nums[i]:
+            count += 1
+
+    if count > n//2:
+        print(nums[i])
+        break
