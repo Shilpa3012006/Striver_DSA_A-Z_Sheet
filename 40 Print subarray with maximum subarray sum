@@ -1,0 +1,19 @@
+nums=list(map(int,input().split()))
+n=len(nums)
+max_sum=float('-inf')
+current_sum=0
+start=0
+end=0
+for i in range(n):
+    if current_sum==0:
+        start=i
+    current_sum+=nums[i]
+    if current_sum > max_sum:
+        end=i
+        max_sum=current_sum
+    
+    if current_sum<0:
+        current_sum=0
+    
+print(max_sum)
+print(nums[start:end+1])
