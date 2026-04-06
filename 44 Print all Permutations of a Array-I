@@ -1,0 +1,16 @@
+nums=list(map(int,input().split()))
+n=len(nums)
+map={}
+ds=[]
+def permute(ds,map):
+    if len(ds)==n:
+        print(ds)
+        return
+    for i in range(n):
+        if i not in map:
+            ds.append(nums[i])
+            map[i]=1
+            permute(ds,map)
+            ds.pop()
+            del map[i]
+permute(ds,map)     
