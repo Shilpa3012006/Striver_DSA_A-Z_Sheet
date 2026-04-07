@@ -1,0 +1,12 @@
+#better approch T.C O(n!*n) S.C O(1)
+nums=list(map(int,input().split()))
+n=len(nums)
+def permute(index,nums):
+    if index==n:
+        print(nums)
+        return
+    for i in range(index,n):
+        nums[index],nums[i]=nums[i],nums[index]
+        permute(index+1,nums)
+        nums[index],nums[i]=nums[i],nums[index]
+permute(0,nums)
