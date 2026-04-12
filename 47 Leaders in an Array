@@ -1,0 +1,29 @@
+#bruteforce approch T.C O(n^2) S.C O(1)
+nums=list(map(int,input().split()))
+n=len(nums)
+ans=[]
+for i in range(n):
+    leader=True
+    for j in range(i+1,n):
+        if nums[i]<=nums[j]:
+            leader=False
+            break
+    if leader:
+        ans.append(nums[i])
+print(ans)
+
+
+#better to optimal approch T.C O(2n) S.C O(n) to T.C O(n) S.C O(1)
+nums=list(map(int,input().split()))
+n=len(nums)
+temp=[]
+max_so_far=float('-inf')
+j=-1
+for i in range(n-1,-1,-1):
+    if max_so_far<nums[i]:
+        # temp.append(nums[i])
+        nums[j]=nums[i]
+        j-=1
+        max_so_far=nums[i]
+print(nums[j+1:])
+# print(temp[::-1])
