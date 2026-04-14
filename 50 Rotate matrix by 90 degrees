@@ -1,0 +1,16 @@
+#if we want to print the rotated matrix but not in-place T.C O(n*m) S.C O(1)[if it is just printing.]
+n,m=map(int,input().split())
+matrix=[list(map(int,input().split())) for _ in range(n)]
+for i in range(m):
+    for j in range(n-1,-1,-1):
+        print(matrix[j][i],end=' ')
+    print()
+
+
+#if we want to rotate the matrix in-place T.C O(n*m) S.C O(1)
+for i in range(n):
+    for j in range(i+1,m):
+        if i<j:
+            matrix[i][j],matrix[j][i]=matrix[j][i],matrix[i][j]
+for i in range(n):    matrix[i].reverse()
+for row in matrix:    print(*row)
