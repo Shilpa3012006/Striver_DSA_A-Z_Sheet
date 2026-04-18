@@ -1,0 +1,17 @@
+nums=list(map(int,input().split()))
+n=len(nums)
+k=int(input())
+count=0
+cur_sum=0
+j=0
+for i in range(n):
+    cur_sum += nums[i]
+
+    while cur_sum > k and j <= i:
+        cur_sum -= nums[j]
+        j += 1
+
+    if cur_sum == k:
+        count += 1
+
+print(count)
