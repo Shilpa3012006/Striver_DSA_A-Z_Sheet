@@ -1,0 +1,13 @@
+#brute force approach T.C O(n^3) S.C O(1)
+nums=list(map(int,input().split()))
+n=len(nums)
+k=int(input())
+count=0
+for i in range(n):
+    for j in range(i,n):
+        cur_sum=0
+        for l in range(i,j+1):
+            cur_sum += nums[l]
+        if cur_sum == k:
+            count += 1
+print(count)
