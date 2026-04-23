@@ -1,0 +1,7 @@
+row=int(input())
+col=int(input())
+res=1
+for i in range(col):
+    res=res*(row-i)
+    res=res//(i+1)
+print(int(res))
