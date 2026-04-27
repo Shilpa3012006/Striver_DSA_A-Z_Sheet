@@ -1,0 +1,70 @@
+#brute force approch T.C O(n^2) S.C O(1)
+nums=list(map(int,input().split()))
+n=len(nums)
+# ans=[]
+# for i in range(n):
+#     if(len(ans)==0 or ans[-1]!=nums[i]):
+#         count = 0
+
+#         for j in range(n):
+#             if nums[j] == nums[i]:
+#                 count += 1
+
+#         if count > n//3:
+#                 ans.append(nums[i])
+#     if len(ans)==2:
+#         break 
+            
+
+#better approch T.C O(n) S.C O(n)
+# hash={}
+# ans=[]
+# for i in range(n):
+#     hash[nums[i]]=hash.get(nums[i],0)+1
+#     if hash[nums[i]]>n//3:
+#         ans.append(nums[i])
+#     if len(ans)==2:
+#         break
+# print(*ans)
+# (we can sort after this and it will not count S.C buz it is 2 log 2--> constant)
+
+#optimal approch (Boyer-Moore Voting Algorithm) T.C O(n) S.C O(1)
+
+element1 = None
+element2 = None
+count1 = 0
+count2 = 0
+ans = []
+
+# Step 1: Find candidates
+for i in range(n):
+    if nums[i] == element1:
+        count1 += 1
+    elif nums[i] == element2:
+        count2 += 1
+    elif count1 == 0:
+        element1 = nums[i]
+        count1 = 1
+    elif count2 == 0:
+        element2 = nums[i]
+        count2 = 1
+    else:
+        count1 -= 1
+        count2 -= 1
+
+# Step 2: Verify
+count1 = 0
+count2 = 0
+
+for i in range(n):
+    if nums[i] == element1:
+        count1 += 1
+    elif nums[i] == element2:
+        count2 += 1
+
+# Step 3: Result
+if count1 > n // 3:
+    ans.append(element1)
+if count2 > n // 3:
+    ans.append(element2)
+print(ans)
