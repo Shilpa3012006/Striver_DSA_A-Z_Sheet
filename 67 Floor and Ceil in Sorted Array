@@ -1,0 +1,28 @@
+nums = list(map(int, input().split()))
+x=int(input())
+n = len(nums)
+low=0
+high=n-1
+floor=-1
+ceil=-1
+while low<=high:
+    mid=(low+high)//2
+    if nums[mid]==x:
+        print(mid," ",mid)
+        break
+    elif nums[mid]<x:
+        floor=mid
+        low=mid+1
+    else:
+        ceil=mid
+        high=mid-1
+
+if floor!=-1:
+    print(floor,end=" ")
+else:
+    print(-1,end=" ")
+
+if ceil!=-1:
+    print(ceil)
+else:
+    print(-1)
