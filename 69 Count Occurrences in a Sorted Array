@@ -1,0 +1,31 @@
+class Solution:
+    def countOccurrences(self, nums, target):
+        # Your code goes here
+        n = len(nums)
+
+        # Lower Bound
+        low, high = 0, n - 1
+        lower = n
+
+        while low <= high:
+            mid = (low + high) // 2
+
+            if nums[mid] >= target:
+                lower = mid
+                high = mid - 1
+            else:
+                low = mid + 1
+
+        low, high = 0, n - 1
+        upper = n
+
+        while low <= high:
+            mid = (low + high) // 2
+
+            if nums[mid] > target:
+                upper = mid
+                high = mid - 1
+            else:
+                low = mid + 1
+
+        return upper-lower
