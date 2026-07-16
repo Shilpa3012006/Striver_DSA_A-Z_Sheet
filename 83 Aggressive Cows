@@ -1,0 +1,26 @@
+class Solution:
+    def aggressiveCows(self, nums, k):
+        nums.sort()
+        def ispossible(nums,k,dis):
+            cow_count=1
+            last_place=nums[0]
+            for i in range(1,n):
+                if nums[i]-last_place>=dis:
+                    cow_count+=1
+                    last_place=nums[i]
+            if cow_count>=k:
+                return True
+            return False
+
+        low=1
+        high=nums[-1]-nums[0]
+        ans=0
+        while low<=high:
+            mid=(low+high)//2
+            if ispossible(nums,k,mid)==True:
+                ans=mid
+                low=mid+1
+            else:
+                high=mid-1
+        return ans
+                
