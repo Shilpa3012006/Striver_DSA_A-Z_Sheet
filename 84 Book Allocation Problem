@@ -1,0 +1,26 @@
+class Solution:
+    def findPages(self, nums, m):
+        
+        low=max(nums)
+        high=sum(nums)
+        ans=high
+        #main logic
+        def ispossible(nums,mid):
+            students=1
+            sum_of_pages=0
+            for i in range(n):
+                if sum_of_pages + nums[i] <= mid:
+                    sum_of_pages += nums[i]
+                else:
+                    students += 1
+                    sum_of_pages = nums[i]
+            return students <= m
+
+        while low<=high:
+            mid=(low+high)//2
+            if ispossible(nums,mid)==True:
+                ans=mid
+                high=mid-1
+            else:
+                low=mid+1
+        return ans
