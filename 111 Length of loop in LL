@@ -1,0 +1,31 @@
+# Definition of singly linked list:
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+class Solution:
+    def findLengthOfLoop(self, head):
+        if head is None or head.next is None:
+            return 0
+
+        slow = head
+        fast = head
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+            if slow == fast:
+                slow=head
+                while slow!=fast:
+                    slow=slow.next
+                    fast=fast.next
+                fast=fast.next
+                count=1
+                while slow!=fast:
+                    count+=1
+                    fast=fast.next
+                return count
+
+        return 0
