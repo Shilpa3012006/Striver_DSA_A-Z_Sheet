@@ -1,0 +1,25 @@
+# Definition of singly linked list:
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+class Solution:
+    def helper(self,temp):
+        if temp is None:
+            return 1
+        carry=self.helper(temp.next)
+        temp.val=temp.val+carry
+        if temp.val<10:
+            return 0
+        temp.val=0
+        return 1
+    def addOne(self, head):
+        if head is None:
+            return head
+        carry=self.helper(head)
+        if carry==1:
+            new_node=ListNode(1)
+            new_node.next=head
+            return new_node
+        return head
