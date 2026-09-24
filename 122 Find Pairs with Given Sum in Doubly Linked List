@@ -1,0 +1,20 @@
+'''
+class ListNode:
+    def __init__(self, val):
+        self.val = val
+        self.next = None
+        self.prev = None
+'''
+
+class Solution:
+    def findPairsWithGivenSum(self, head, target):
+        # Your code goes here
+        arr=[]
+        hashmap={}
+        while head:
+            if target-head.val in hashmap:
+                arr.append([target-head.val,head.val])
+            else:
+                hashmap[head.val]=1
+            head=head.next
+        return sorted(arr)
