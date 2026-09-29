@@ -1,0 +1,24 @@
+#optimal solution with T.C O(1) and S.C O(1)
+class Solution:
+   
+    def checkIthBit(self, n: int, i: int) -> bool:
+        # Your code goes here
+        return bool(n&(1<<i))#(left shift operator)
+        return bool((n>>i)&1)#(right shift operator)
+
+#brute force solution with T.C O(logn) and S.C O(logn)(binary representation)
+class Solution:
+    def checkIthBit(self, n: int, i: int) -> bool:
+        res = ""
+
+        while n > 0:
+            if n % 2 == 1:
+                res += '1'
+            else:
+                res += '0'
+            n //= 2
+
+        if i >= len(res):
+            return False
+
+        return res[i] == '1'
