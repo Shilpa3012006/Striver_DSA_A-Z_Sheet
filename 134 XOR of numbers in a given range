@@ -1,0 +1,25 @@
+#brute force approch T.C (O(R-L+1))
+L=int(input())
+R=int(input())
+ans=0
+for i in range(L,R+1):
+    ans^=i
+print(ans)
+
+#optimal approch
+class Solution:      
+    def findRangeXOR(self, L, R):
+        #your code goes here
+        def xor(n):
+            if n%4==1:
+                return 1
+            elif n%4==2:
+                return n+1
+            elif n%4==3:
+                return 0
+            else:
+                return n
+        sub_part=xor(L-1)
+        total=xor(R)
+        ans=sub_part^total
+        return ans
