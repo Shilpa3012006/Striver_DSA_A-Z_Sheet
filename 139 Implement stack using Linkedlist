@@ -1,0 +1,29 @@
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class LinkedListStack:
+    def __init__(self):
+        self.head=ListNode()
+        self.size=0
+
+    def push(self, x):
+        new_node=ListNode(x)
+        new_node.next=self.head
+        self.head=new_node
+        self.size+=1
+ 
+    def pop(self):
+        new_node=self.head
+        self.head=self.head.next
+        new_node.next=None
+        self.size-=1
+        return new_node.val
+        
+    def top(self):
+        return self.head.val
+     
+
+    def isEmpty(self):
+        return self.size==0
