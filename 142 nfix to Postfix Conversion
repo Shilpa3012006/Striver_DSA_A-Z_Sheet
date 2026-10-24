@@ -1,0 +1,41 @@
+#optimal solution with T.C O(n) and S.C O(n)
+class Solution:
+    def infixToPostfix(self, s: str) -> str:
+        # Your code goes here
+        precedence={'+':1,'-':1,'*':2,'/':2,'^':3}
+        right_associative={'^'}
+        stack=[]
+        output=[]
+        for current in s:
+            if current.isalnum():
+                output.append(current)
+            elif current=="(":
+                stack.append(current)
+            elif current==")":
+                while stack and stack[-1]!="(":
+                    output.append(stack.pop())
+                stack.pop()
+
+            else:
+                while (
+                    stack
+                    and stack[-1]!="(" 
+                    and (
+                        precedence[stack[-1]]>precedence[current]
+                        or
+                        (
+                            precedence[stack[-1]]==precedence[current]
+                            and current not in right_associative
+                        )
+                    ) 
+                ):
+                    output.append(stack.pop())
+                stack.append(current)
+
+        while stack:
+            output.append(stack.pop())
+        return ''.join(output)
+
+
+
+
