@@ -1,0 +1,39 @@
+s=input()
+precedence = {
+            '+': 1,
+            '-': 1,
+            '*': 2,
+            '/': 2
+        }
+
+stack = []
+output = []
+
+for i in range(len(s) - 1, -1, -1):
+    current = s[i]
+
+    if current.isalnum():
+        output.append(current)
+
+    elif current == ')':
+        stack.append(current)
+
+    elif current == '(':
+        while stack and stack[-1] != ')':
+            output.append(stack.pop())
+        stack.pop()
+
+    else:
+        while (
+            stack
+            and stack[-1] != ')'
+            and precedence[stack[-1]] > precedence[current]
+        ):
+            output.append(stack.pop())
+
+        stack.append(current)
+
+while stack:
+    output.append(stack.pop())
+
+print(''.join(output[::-1]))
