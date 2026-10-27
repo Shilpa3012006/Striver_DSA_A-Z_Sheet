@@ -1,0 +1,12 @@
+#optimal solution with T.C O(n) S.C O(n)
+class Solution:
+    def prefixToPostfix(self, s: str) -> str:
+        # Your code goes here
+        stack=[]
+        for i in range(len(s)-1,-1,-1):
+            if s[i].isalnum():
+                stack.append(s[i])
+            else:
+                # ans=stack.pop()+stack.pop()+s[i]
+                stack.append(stack.pop()+stack.pop()+s[i])
+        return stack[-1]
