@@ -1,0 +1,13 @@
+#optimal solution with T.C O(n) S.C O(n)
+class Solution:
+    def postToPre(self, postfix: str) -> str:
+        # Your code goes here
+        stack=[]
+        for s in postfix:
+            if s.isalnum():
+                stack.append(s)
+            else:
+                op2=stack.pop()
+                op1=stack.pop()
+                stack.append(s+op1+op2)
+        return stack[-1]   
